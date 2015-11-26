@@ -27,6 +27,8 @@ class AdminLteAsset extends AssetBundle {
         'web/themes/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css',
         'web/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
         'web/themes/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
+        //Alert 
+        'web/lib/sweetalert-master/dist/sweetalert.css',
     ];
     public $js = [
 
@@ -43,7 +45,8 @@ class AdminLteAsset extends AssetBundle {
         'web/themes/AdminLTE/plugins/iCheck/icheck.min.js',
         'web/themes/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js',
         'web/themes/AdminLTE/plugins/chartjs/Chart.min.js',
-        //'web/croppic-master/assets/js/jquery.mousewheel.min.js',
+            //'web/croppic-master/assets/js/jquery.mousewheel.min.js',
+         'web/lib/sweetalert-master/dist/sweetalert.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

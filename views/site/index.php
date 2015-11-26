@@ -1,53 +1,191 @@
 <?php
 
-/* @var $this yii\web\View */
+use yii\helpers\Url;
+?>    
+<!-- Main content -->
+<section class="content">
 
-$this->title = 'My Yii Application';
-?>
-<div class="site-index">
+    <div class="row">
+        <div class="col-md-3">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <div id="detail_person">
+                        <center>
+                            <img class="profile-user-img img-responsive img-circle" src="<?php echo Url::to('@web/web/images/No_image.jpg') ?>" alt="User profile picture">
+                        </center>
+                        <h4 class="profile-username text-center">กรุณาค้นหารายชื่อ ...</h4>
+                        <div class="box box-default collapsed-box box-solid disabled">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">ข้อมูลพื้นฐาน</h3>
+                                <!-- /.box-tools -->
+                            </div>
+                            <div class="box-body" style="padding: 1px;">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            <!-- /.box -->
         </div>
+        <!-- /.col -->
 
+
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#service_detail" data-toggle="tab">ข้อมูลการรับบริการ</a></li>
+                    <li><a href="#timeline" data-toggle="tab">ประวัติการแพ้ยา</a></li>
+                    <li><a href="#settings" data-toggle="tab">โรคเรื้อรัง</a></li>
+                    <li><a href="#history" data-toggle="tab">ประวัติการผ่าตัด</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="service_detail">ไม่มีข้อมูล ...</div>
+                    <div class="tab-pane" id="timeline">ไม่มีข้อมูล ...</div>
+                    <div class="tab-pane" id="settings">ไม่มีข้อมูล ...</div>
+                    <div class="tab-pane" id="history">ไม่มีข้อมูล ...</div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+
+            <!--
+                ######################## วินิจฉัย  Diagnosis ########################
+            -->
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <i class="fa fa-user-md"></i> วินิจฉัย
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div id="diagnosis">ไม่มีข้อมูล ...</div>
+                </div>
+            </div>
+
+            <!--
+               ######################## ข้อมูลอื่น ๆ ########################
+            -->
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">ข้อมูลอื่น ๆ</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="box-group" id="accordion">
+                        <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                        <div class="panel box box-primary">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        รายการยา
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel box box-danger">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        หัตถการ
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel box box-success">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        แล็บ
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel box box-info">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                        เอ็กซเรย์
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel box box-warning">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                        การรับวัคซีน
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel box box-default">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                        ค่าใช้จ่าย
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel box box-primary">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                        การนัดหมาย
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSeven" class="panel-collapse collapse">
+                                <div class="box-body">
+                                    ไม่มีข้อมูล ...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
     </div>
-</div>
+    <!-- /.row -->
+
+</section>

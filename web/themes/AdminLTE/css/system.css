@@ -15,11 +15,13 @@
 //#bg-nav ul li a{ color: #000000; text-shadow:1px 0px #FFFFFF;}
 //#bg-nav a{ color: #000000; text-shadow:1px 0px #FFFFFF;}
 #bg-sidebar{
-    background: rgba(183,222,237,1);
-
+    //background: rgba(183,222,237,1);
+    background: #FFFFFF;
 }
 
 #bg-head-sidebar{
+    background: #00c0ef;
+    /*
    color: #000;
     background: rgba(183,222,237,1);
     background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
@@ -29,7 +31,23 @@
     background: -ms-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
     background: linear-gradient(to bottom, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=0 );
+    */
+}
 
+#bg-head-sidebar-orange{
+    background: #db8b0b;
+}
+
+#bg-nav-orange{
+    background: #f39c12;
+}
+
+#bg-head-sidebar-line{
+    background: #232a37;
+}
+
+#bg-nav-line{
+    background: #2d3649;
 }
 
 #btn{
