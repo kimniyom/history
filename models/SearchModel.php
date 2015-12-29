@@ -67,6 +67,8 @@ class SearchModel extends Model {
     //ข้อมูลพื้นฐาน
     function GetPersonInfo($cid) {
         $sql = "SELECT CID,
+            p.HOSPCODE,
+            p.PID,
             CONCAT(IFNULL(mp.NAME, ''),IFNULL(p.NAME, ''),' ',IFNULL(p.LNAME, '')) AS PERSONNAME,
             IF(SEX = '1','ชาย','หญิง') AS SEX,
                 BIRTH,
@@ -108,7 +110,7 @@ class SearchModel extends Model {
         return $result;
         //return $sql;
     }
-    
+
     //ข้อมูลรายละเอียดการรับบริการ
     function GetServiceDetail($hospCode, $cid, $seq) {
         $sql = "SELECT p.HN,s.HOSPCODE,off_name AS HOSPNAME,s.PID,SEQ,DATE_SERV,TIME_SERV,LOCATION,INSTYPE,INSID,TYPEIN,CHIEFCOMP,BTEMP,SBP,DBP,PR,RR,TYPEOUT,PRICE,ACTUALPAY,PAYPRICE 

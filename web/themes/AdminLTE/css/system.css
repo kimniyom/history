@@ -12,10 +12,8 @@
 #bg-nav{
     background: #139dea;
 }
-//#bg-nav ul li a{ color: #000000; text-shadow:1px 0px #FFFFFF;}
-//#bg-nav a{ color: #000000; text-shadow:1px 0px #FFFFFF;}
+
 #bg-sidebar{
-    //background: rgba(183,222,237,1);
     background: #FFFFFF;
 }
 
@@ -58,4 +56,22 @@
     background: #cccccc;
     text-align: center;
 }
+#bg-blue-lights{
+    background:#52b2e4;
+}
 
+::-webkit-scrollbar
+{
+    width: 10px;  /* for vertical scrollbars */
+    height: 10px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+    background: #666666;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: #FFFFFF;
+}

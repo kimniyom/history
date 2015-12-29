@@ -9,7 +9,7 @@
         font-size: 12px;
         border: #999999 dotted 1px;
         text-align: left;
-        color: #009999;
+        color: #ff3300;
     }
     #list_history thead tr th{
         font-size: 12px;
@@ -17,8 +17,7 @@
     }
 </style>
 <?php
-
-use yii\helpers\Url;
+    use yii\helpers\Url;
 ?>
 <?php
 /*
@@ -54,7 +53,7 @@ use yii\helpers\Url;
         $i = 0;
         foreach ($result as $rs): $i++;
             ?>
-            <tr onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>','<?php echo $rs['CID'] ?>')" id="<?php echo $i; ?>">
+            <tr onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>', '<?php echo $rs['CID'] ?>')" id="<?php echo $i; ?>">
                 <td><?php echo $i; ?></td>
                 <td><?php echo $rs['DATE_SERV']; ?></td>
                 <td data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
@@ -79,7 +78,7 @@ use yii\helpers\Url;
         });
     });
 
-    function active_menu(id, hospcode, pid, seq,cid) {
+    function active_menu(id, hospcode, pid, seq, cid) {
         //$(this).addClass("active-menu-history");
         $("#list_history tbody tr").removeClass("active-menu-history");
         $("#" + id).each(function () {
@@ -104,8 +103,8 @@ use yii\helpers\Url;
             $("#diagnosis").html(result);
         });
     }
-    
-    function get_service_detail(hospcode, cid, seq){
+
+    function get_service_detail(hospcode, cid, seq) {
         var url = "<?php echo Url::to(['search/get_service_detail']) ?>";
         var data = {
             hospcode: hospcode,

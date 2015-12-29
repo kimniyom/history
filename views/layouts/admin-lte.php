@@ -7,11 +7,12 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AdminLteAsset;
 //use app\assets\JsAsset;
 use yii\helpers\Url;
-
+use yii2mod\google\maps\markers\GoogleMaps;
 AdminLteAsset::register($this);
 //JsAsset::register($this);
 $this->title = "ประวัติผู้ป่วย";
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -21,6 +22,7 @@ $this->title = "ประวัติผู้ป่วย";
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+       <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
     <body class="skin-blue-light fixed">
         <?php $this->beginBody() ?>
@@ -44,7 +46,6 @@ $this->title = "ประวัติผู้ป่วย";
 
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="javascript:popup_dialog()" class="dropdown-toggle">
@@ -52,15 +53,6 @@ $this->title = "ประวัติผู้ป่วย";
                                     ค้นหาผู้ป่วย
                                 </a>
                             </li>
-
-                            <!-- Notifications: style can be found in dropdown.less
-                            <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-user"></i> 
-                                    
-                                </a>
-                            </li>
-                            -->
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -111,7 +103,7 @@ $this->title = "ประวัติผู้ป่วย";
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar" id="bg-sidebar">
+            <aside class="main-sidebar bg-black-gradient" id="bg-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- sidebar menu: : style can be found in sidebar.less -->
