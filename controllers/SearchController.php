@@ -43,22 +43,36 @@ class SearchController extends Controller {
 
     //ข้อมูลเบื้องต้น
     public function actionGet_detail_person() {
+        $address_model = new \app\models\Address();
         $Map = new Google_map();
         $Map->SetCenter("16.940225, 99.074165");
-        //$link = Url::toRoute('search/kml_ampur_all', true);
-        $Map->SetArea('');
-        $Map->Zoom("10");
-        $Map->Maptype(""); //Type ROADMAP,SATELLITE ,HYBRID ,TERRAIN
-        $Marker = $Map->SetMarker("1", "16.940225", "99.074165", "kimniyom", '');
-        $Map->Marker($Marker);
-        $map_person = $Map->Render();
-
         $cid = \Yii::$app->request->post('cid');
         $model = new \app\models\SearchModel();
-        $address_model = new \app\models\Address();
         $result = $model->GetPersonInfo($cid);
         $address = $address_model->Get_address_person($result['HOSPCODE'], $result['PID']);
         //find()->where(['HOSPCODE' => $result['HOSPCODE'], 'PID' => $result['PID']])->one();
+        //$link = Url::toRoute('search/kml_ampur_all', true);
+        $latlong = $address_model->Get_home($result['HID'], $result['HOSPCODE']);
+
+        if ($latlong['LATITUDE'] == "" || $latlong['LONGITUDE'] == "") {
+            $lat = "";
+            $long = "";
+            $Markers = "";
+        } else {
+            $lat = $latlong['LATITUDE'];
+            $long = $latlong['LONGITUDE'];
+            $content = $result['PERSONNAME'];
+            $Markers = $Map->SetMarker("1", $lat, $long, $content, '');
+        }
+
+        $Map->SetArea('');
+        $Map->Zoom("10");
+        $Map->Maptype(""); //Type ROADMAP,SATELLITE ,HYBRID ,TERRAIN
+        $Marker = $Markers;
+        $Map->Marker($Marker);
+        $map_person = $Map->Render();
+
+
         //echo $map;
         return $this->renderPartial('detail_person', [
                     "model" => $result,
@@ -66,7 +80,7 @@ class SearchController extends Controller {
                     "map" => $map_person,
         ]);
     }
-    
+
     //ข้อมูลได้รับการวินิจฉัย
     public function actionGet_diag() {
         $hospCode = \Yii::$app->request->post('hospcode');

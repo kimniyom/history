@@ -93,4 +93,10 @@ class Address extends \yii\db\ActiveRecord {
         return $result;
     }
 
+    public function Get_home($HID = null, $HOSPCODE = null) {
+        $sql = "SELECT LATITUDE,LONGITUDE FROM home WHERE HID = '$HID' AND HOSPCODE = '$HOSPCODE' ";
+        $result = \Yii::$app->db->createCommand($sql)->queryOne();
+        return $result;
+    }
+
 }

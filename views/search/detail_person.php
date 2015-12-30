@@ -18,7 +18,7 @@ $occupation_name = $occupation->find()->where(['occupa_id' => $model['OCCUPA']])
         <img class="profile-user-img img-responsive img-circle" src="<?php echo Url::to('@web/web/themes/AdminLTE/dist/img/avatar2.png') ?>" alt="User profile picture">
     <?php } else { ?>
         <img class="profile-user-img img-responsive img-circle" src="<?php echo Url::to('@web/web/themes/AdminLTE/dist/img/avatar.png') ?>" alt="User profile picture">
-<?php } ?>
+    <?php } ?>
 </center>
 <h4 class="profile-username" style=" color: #009900;"><?php echo $model['PERSONNAME'] ?></h4>
 <p class="text-muted">อายุ <?php echo $model['AGE'] ?> ปี</p>
@@ -31,7 +31,7 @@ DETAIL
     <li class="list-group-item">
         <b>บัตรประชาชน</b> <a class="pull-right"><?php echo $model['CID'] ?></a>
         <?php echo $model['PID'] ?>
-<?php echo $model['HOSPCODE'] ?>
+        <?php echo $model['HOSPCODE'] ?>
     </li>
     <li class="list-group-item">
         <b>เพศ</b> <a class="pull-right"><?php echo $model['SEX'] ?></a>
@@ -76,15 +76,16 @@ DETAIL
     <!-- /.box-header -->
     <div class="box-body">
         <p class="text-muted">
-            <?php echo $address['HOUSENO'] ?>
-            <?php echo $address['ROAD'] ?>
-            <?php echo $address['villagename'] ?>
-            <?php echo $address['tambonname'] ?>
-            <?php echo $address['ampurname'] ?>
-        <?php echo $address['changwatname'] ?>
+            <label>บ้านเลขที่</label> <?php echo $address['HOUSENO'] ?>
+            <label>ถนน</label> <?php echo $address['ROAD'] ?>
+            <label>หมู่บ้าน</label>  <?php echo $address['villagename'] ?>
+            <label>ตำบล</label> <?php echo $address['tambonname'] ?>
+            <label>อำเภอ</label> <?php echo $address['ampurname'] ?>
+            <label>จังหวัด</label> <?php echo $address['changwatname'] ?>
         </p>
-        <?php echo $map;?>
-        <div id="googleMapmain" style=" width: 100%; height: 700px; max-height: 700px;"></div>
+        <?php echo $map; ?>
+        <div id="googleMapmain" style=" width: 100%; height: 300px; max-height: 300px;"></div>
+
     </div>
 </div>
 

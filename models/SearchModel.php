@@ -69,6 +69,7 @@ class SearchModel extends Model {
         $sql = "SELECT CID,
             p.HOSPCODE,
             p.PID,
+            p.HID,
             CONCAT(IFNULL(mp.NAME, ''),IFNULL(p.NAME, ''),' ',IFNULL(p.LNAME, '')) AS PERSONNAME,
             IF(SEX = '1','ชาย','หญิง') AS SEX,
                 BIRTH,

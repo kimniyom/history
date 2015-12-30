@@ -5,10 +5,12 @@
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use app\assets\AdminLteAsset;
+use app\assets\Geoxml3Asset;
 //use app\assets\JsAsset;
 use yii\helpers\Url;
-use yii2mod\google\maps\markers\GoogleMaps;
+
 AdminLteAsset::register($this);
+Geoxml3Asset::register($this);
 //JsAsset::register($this);
 $this->title = "ประวัติผู้ป่วย";
 ?>
@@ -21,11 +23,11 @@ $this->title = "ประวัติผู้ป่วย";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
-       <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<?php $this->head() ?>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
     <body class="skin-blue-light fixed">
-        <?php $this->beginBody() ?>
+<?php $this->beginBody() ?>
 
         <div class="wrapper">
 
@@ -108,7 +110,7 @@ $this->title = "ประวัติผู้ป่วย";
                 <section class="sidebar">
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" id="result_service">
-                        <li><a href="javascript:popup_dialog()"><i class="fa fa-search"></i> <span>ค้นหาผู้ป่วย</span></a></li>
+                        <li><a href="javascript:popup_dialog()"><i class="fa fa-search text-red"></i> <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a></li>
                         <li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ</li>
                         <!-- 
                         แสดงข้อมูลการมารับบริการ
@@ -142,7 +144,7 @@ $this->title = "ประวัติผู้ป่วย";
 
                 <!-- Main content -->
                 <section class="content" style=" margin-top: 0px; padding-top: 0px;">
-                    <?= $content ?>
+<?= $content ?>
                 </section><!-- /.content -->
 
 
@@ -158,7 +160,7 @@ $this->title = "ประวัติผู้ป่วย";
             <div class="control-sidebar-bg"></div>
         </div><!-- ./wrapper -->
 
-        <?php $this->endBody() ?>
+<?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage() ?>

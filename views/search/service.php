@@ -9,7 +9,7 @@
         font-size: 12px;
         border: #999999 dotted 1px;
         text-align: left;
-        color: #ff3300;
+        color: #33cc00;
     }
     #list_history thead tr th{
         font-size: 12px;
@@ -36,7 +36,7 @@
 <?php //endforeach; ?>
 
 
-<li><a href="javascript:popup_dialog()"><i class="fa fa-search"></i> <span>ค้นหาผู้ป่วย</span></a></li>
+<li><a href="javascript:popup_dialog()"><i class="fa fa-search text-yellow"></i> <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a></li>
 <li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ</li>
 
 <table class="table table-hover" id="list_history" style=" width: 100%; margin-top: 0px;">
