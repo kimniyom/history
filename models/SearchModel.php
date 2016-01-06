@@ -24,6 +24,7 @@ class SearchModel extends Model {
         $sql = "SELECT 
                 p1.CID,
                 p1.PID,
+                p1.HOSPCODE,
                 CONCAT(
                   IFNULL(mp1.NAME, ''),
                   IFNULL(p1.NAME, ''),

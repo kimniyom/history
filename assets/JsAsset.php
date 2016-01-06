@@ -21,8 +21,8 @@ class JsAsset extends AssetBundle {
     public $css = [
     ];
     public $js = [
-        'web/js/orders.js',
-        'web/js/accounting.js',
+        'web/js/store.js',
+        //'web/js/accounting.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

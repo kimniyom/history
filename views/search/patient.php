@@ -19,14 +19,14 @@
                 foreach ($result as $rs): $i++;
                     ?>
                     <tr>
-                        <td><?php echo $i; ?></td>
+                        <td><?php echo $i; ?>></td>
                         <td><?php echo $rs['CID']; ?></td>
                         <td><?php echo $rs['PERSONNAME']; ?></td>
                         <td><?php echo $rs['SEX']; ?></td>
                         <td><?php echo $rs['AGE']; ?></td>
-                        <td><a href="javascript:get_service('<?php echo $rs['CID'] ?>')"><i class="fa fa-eye text-blue"></i></a></td>
+                        <td><a href="javascript:get_service('<?php echo $rs['CID'] ?>','<?php echo $rs['PID']; ?>','<?php echo $rs['HOSPCODE']; ?>')"><i class="fa fa-eye text-blue"></i></a></td>
                     </tr>
-<?php endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

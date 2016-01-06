@@ -57,13 +57,13 @@ use yii\helpers\Url;
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#service_detail" data-toggle="tab">ข้อมูลการรับบริการ</a></li>
-                <li><a href="#timeline" data-toggle="tab">ประวัติการแพ้ยา</a></li>
+                <li><a href="#drugallergy" data-toggle="tab">ประวัติการแพ้ยา</a></li>
                 <li><a href="#settings" data-toggle="tab">โรคเรื้อรัง</a></li>
                 <li><a href="#history" data-toggle="tab">ประวัติการผ่าตัด</a></li>
             </ul>
             <div class="tab-content">
                 <div class="active tab-pane" id="service_detail">ไม่มีข้อมูล ...</div>
-                <div class="tab-pane" id="timeline">ไม่มีข้อมูล ...</div>
+                <div class="tab-pane" id="drugallergy">ไม่มีข้อมูล ...</div>
                 <div class="tab-pane" id="settings">ไม่มีข้อมูล ...</div>
                 <div class="tab-pane" id="history">ไม่มีข้อมูล ...</div>
                 <!-- /.tab-pane -->

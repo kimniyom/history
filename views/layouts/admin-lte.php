@@ -6,12 +6,12 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use app\assets\AdminLteAsset;
 use app\assets\Geoxml3Asset;
-//use app\assets\JsAsset;
+use app\assets\JsAsset;
 use yii\helpers\Url;
 
 AdminLteAsset::register($this);
 Geoxml3Asset::register($this);
-//JsAsset::register($this);
+JsAsset::register($this);
 $this->title = "ประวัติผู้ป่วย";
 ?>
 
@@ -23,11 +23,11 @@ $this->title = "ประวัติผู้ป่วย";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-<?php $this->head() ?>
+        <?php $this->head() ?>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
     <body class="skin-blue-light fixed">
-<?php $this->beginBody() ?>
+        <?php $this->beginBody() ?>
 
         <div class="wrapper">
 
@@ -48,6 +48,10 @@ $this->title = "ประวัติผู้ป่วย";
 
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu">
+                                <input type="text" id="PID"/>
+                                <input type="text" id="HOSPCODE"/>
+                            </li>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="javascript:popup_dialog()" class="dropdown-toggle">
@@ -144,7 +148,7 @@ $this->title = "ประวัติผู้ป่วย";
 
                 <!-- Main content -->
                 <section class="content" style=" margin-top: 0px; padding-top: 0px;">
-<?= $content ?>
+                    <?= $content ?>
                 </section><!-- /.content -->
 
 
@@ -160,7 +164,7 @@ $this->title = "ประวัติผู้ป่วย";
             <div class="control-sidebar-bg"></div>
         </div><!-- ./wrapper -->
 
-<?php $this->endBody() ?>
+        <?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage() ?>
@@ -282,9 +286,12 @@ $this->title = "ประวัติผู้ป่วย";
         });
     }
 
-    function get_service(cid) {
+    function get_service(cid, pid, hospcode) {
+        $("#PID").val(pid);
+        $("#HOSPCODE").val(hospcode);
 
         get_detail(cid);
+        get_drugallergy(hospcode, pid);
 
         var url = "<?php echo Url::to(['search/get_service']) ?>";
         var data = {cid: cid};
