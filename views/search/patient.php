@@ -19,7 +19,7 @@
                 foreach ($result as $rs): $i++;
                     ?>
                     <tr>
-                        <td><?php echo $i; ?>></td>
+                        <td><?php echo $i; ?></td>
                         <td><?php echo $rs['CID']; ?></td>
                         <td><?php echo $rs['PERSONNAME']; ?></td>
                         <td><?php echo $rs['SEX']; ?></td>

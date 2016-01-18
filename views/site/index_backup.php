@@ -101,43 +101,43 @@ use yii\helpers\Url;
                 <!-- Etc Box -->
                 <div class="row">
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" onclick="drug('รายการยา')">
                             <i class="fa fa-file-text fa-2x text-green"></i> <br/>รายการยา
                         </button>
                     </div>
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" onclick="procedure_opd('หัตถการ')">
                             <i class="fa fa-stethoscope fa-2x text-blue"></i> <br/>หัตถการ
                         </button>
                     </div>
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
                             <i class="fa fa-hospital-o fa-2x text-orange"></i> <br/>แล็บ
                         </button>
                     </div>
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
                             <i class="fa fa-heartbeat fa-2x text-red"></i> <br/>เอ็กซเรย์
                         </button>
                     </div>
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
                             <i class="fa fa-eyedropper fa-2x text-blue"></i> <br/>การรับวัคซีน
                         </button>
                     </div>
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
                             <i class="fa fa-money fa-2x text-green"></i> <br/>ค่าใช้จ่าย
                         </button>
                     </div>
 
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" onclick="appoint('การนัดหมาย')">
                             <i class="fa fa-repeat fa-2x text-red"></i> <br/>การนัดหมาย
                         </button>
@@ -145,6 +145,108 @@ use yii\helpers\Url;
 
                 </div>
                 <!-- End Etc Box -->
+
+                <div class="box-group" id="accordion">
+                    <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                    <div class="panel box box-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <i class="fa fa-file-text"></i> รายการยา
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="box-body">
+                                <div id="drug_opd"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel box box-danger">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    <i class="fa fa-stethoscope text-warning"></i> หัตถการ
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="box-body">
+                                <div id="procedure_opd"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel box box-success">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    <i class="fa fa-hospital-o text-warning"></i> แล็บ
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="box-body">
+                                ไม่มีข้อมูล ...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel box box-info">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                    <i class="fa fa-heartbeat text-warning"></i> เอ็กซเรย์
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="box-body">
+                                ไม่มีข้อมูล ...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel box box-warning">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                    <i class="fa fa-eyedropper text-primary"></i> การรับวัคซีน
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="box-body">
+                                ไม่มีข้อมูล ...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel box box-default">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                    <i class="fa fa-money text-success"></i> ค่าใช้จ่าย
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse">
+                            <div class="box-body">
+                                ไม่มีข้อมูล ...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel box box-primary">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                    <i class="fa fa-repeat text-red"></i> การนัดหมาย
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="panel-collapse collapse">
+                            <div class="box-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.box-body -->
         </div>

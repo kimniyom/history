@@ -48,9 +48,17 @@ $this->title = "ประวัติผู้ป่วย";
 
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown user user-menu">
-                                <input type="text" id="PID"/>
-                                <input type="text" id="HOSPCODE"/>
+                            <li class="dropdown user user-menu" style=" padding-top: 10px;">
+                                <input type="text" id="PID" class="form-control input-sm" placeholder="PID" readonly="readonly"/>
+                            </li>
+                            <li class="dropdown user user-menu" style=" padding-top: 10px;">
+                                <input type="text" id="HOSPCODE" class="form-control input-sm" placeholder="สถานบริการ" readonly="readonly"/>
+                            </li>
+                            <li class="dropdown user user-menu" style=" padding-top: 10px;">
+                                <input type="text" id="SEQ" class="form-control input-sm" placeholder="คิว" readonly="readonly"/>
+                            </li>
+                            <li class="dropdown user user-menu" style=" padding-top: 10px;">
+                                <input type="text" id="DATE_SERVICE" class="form-control input-sm" placeholder="วันที่รับบริการ" readonly="readonly"/>
                             </li>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
@@ -254,6 +262,31 @@ $this->title = "ประวัติผู้ป่วย";
 </div><!-- /.modal -->
 
 
+
+
+<!-- 
+ ################## Popup list Service Full #############
+-->
+<div class="modal" id="popup-service-full">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style=" color: #cccccc;"><i class="fa fa-users"></i> ประวัติรับบริการ</h4>
+            </div>
+            <div class="modal-body">
+                <div id="result_service_full"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal"><i class="fa fa-remove text-red"></i></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
 <script type="text/javascript">
     //เปิดช่องค้นหา
     function popup_dialog() {
@@ -291,15 +324,24 @@ $this->title = "ประวัติผู้ป่วย";
         $("#HOSPCODE").val(hospcode);
 
         get_detail(cid);
-        get_drugallergy(hospcode, pid);
+        get_drugallergy(hospcode, pid);//ดึงข้อมูลการแพ้ยา
 
         var url = "<?php echo Url::to(['search/get_service']) ?>";
         var data = {cid: cid};
         $("#result_service").html("<center><i class='fa fa-spinner  fa-spin fa-2x'></i></center>");
-
+        get_service_full(cid);
         $.post(url, data, function (result) {
             $("#result_service").html(result);
             $("#dialog_search").modal("hide");
+        });
+    }
+
+//ขยายจอ
+    function get_service_full(cid) {
+        var url = "<?php echo Url::to(['search/get_service_full']) ?>";
+        var data = {cid: cid};
+        $.post(url, data, function (result) {
+            $("#result_service_full").html(result);
         });
     }
 
@@ -355,5 +397,9 @@ $this->title = "ประวัติผู้ป่วย";
         $.post(url, data, function (success) {
             window.location.reload();
         });
+    }
+
+    function show_service_full() {
+        $("#popup-service-full").modal();
     }
 </script>

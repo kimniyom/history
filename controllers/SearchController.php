@@ -41,6 +41,17 @@ class SearchController extends Controller {
         ]);
     }
 
+    //ข้อมูลประวัติการรับบริการ
+    public function actionGet_service_full() {
+        $cid = \Yii::$app->request->post('cid');
+        $model = new \app\models\SearchModel();
+
+        $result = $model->GetService($cid);
+        return $this->renderPartial('service_full', [
+                    "result" => $result,
+        ]);
+    }
+
     //ข้อมูลเบื้องต้น
     public function actionGet_detail_person() {
         $address_model = new \app\models\Address();

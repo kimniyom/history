@@ -17,7 +17,8 @@
     }
 </style>
 <?php
-    use yii\helpers\Url;
+
+use yii\helpers\Url;
 ?>
 <?php
 /*
@@ -33,11 +34,18 @@
             <i class="fa fa-calendar-o text-red"></i> <?//php echo $rs['DATE_SERV'] ?><?//php echo $rs['HOSPCODE'] ?></a>
     </li>
 -->
-<?php //endforeach; ?>
+<?php //endforeach;  ?>
 
 
 <li><a href="javascript:popup_dialog()"><i class="fa fa-search text-yellow"></i> <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a></li>
-<li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ</li>
+<li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ 
+    <button class="btn btn-xs pull-right" onclick="show_service_full()" 
+            style="margin: 0px; background: none; padding-right: 0px;"
+            data-toggle="tooltip" data-trigger="hover" title="ขยายใหญ่" data-placement="left">
+        <i class="fa fa-expand"></i>
+    </button>
+</li>
+
 
 <table class="table table-hover" id="list_history" style=" width: 100%; margin-top: 0px;">
     <thead>
@@ -53,7 +61,7 @@
         $i = 0;
         foreach ($result as $rs): $i++;
             ?>
-            <tr onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>', '<?php echo $rs['CID'] ?>')" id="<?php echo $i; ?>">
+            <tr onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>', '<?php echo $rs['CID'] ?>', '<?php echo $rs['DATE_SERV']; ?>')" id="<?php echo $i; ?>">
                 <td><?php echo $i; ?></td>
                 <td><?php echo $rs['DATE_SERV']; ?></td>
                 <td data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
@@ -78,16 +86,24 @@
         });
     });
 
-    function active_menu(id, hospcode, pid, seq, cid) {
+    function active_menu(id, hospcode, pid, seq, cid, date) {
         //$(this).addClass("active-menu-history");
+        $("#popup-service-full").modal("hide");
         $("#list_history tbody tr").removeClass("active-menu-history");
         $("#" + id).each(function () {
             // checks if its the same on the address bar
             $(this).addClass("active-menu-history");
         });
 
+        $("#SEQ").val(seq);
+        $("#DATE_SERVICE").val(date);
         get_diag(hospcode, pid, seq);
         get_service_detail(hospcode, cid, seq);
+        /*
+         drug(hospcode, pid, seq);//ดึงข้อมูลการได้รับยา คำสั่งอยู่ที่ store.js
+         procedure_opd(hospcode, pid, seq);//ดึงข้อมูลหัตถการ คำสั่งอยู่ที่ store.js
+         appointment(hospcode, pid, seq);//ดึงข้อมูลการนัด คำสั่งอยู่ที่ store.js
+         */
     }
 
     function get_diag(hospcode, pid, seq) {

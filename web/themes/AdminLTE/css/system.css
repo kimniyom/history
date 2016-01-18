@@ -75,3 +75,19 @@
 {
     background: #FFFFFF;
 }
+
+.text-red{
+    color: #ff0033;
+}
+
+.text-green{
+    color: #66cc00;
+}
+
+.text-orange{
+    color: #ff9900;
+}
+
+.text-blue{
+    color: #3399ff;
+}
