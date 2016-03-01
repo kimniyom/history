@@ -8,8 +8,8 @@ use yii\helpers\Url;
     <div class="row">
 
         <!-- Box Comment -->
-        <div class="box box-info collapsed-box">
-            <div class="box-header with-border bg-blue-gradient">
+        <div class="box box-default collapsed-box">
+            <div class="box-header with-border bg-black-gradient">
                 <h3 class="box-title">
                     <i class="fa fa-user"></i> 
                     <!-- ข้อมูลถูกเซ็ตมาจากไฟล์ detail_person -->
@@ -56,16 +56,16 @@ use yii\helpers\Url;
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#service_detail" data-toggle="tab">ข้อมูลการรับบริการ</a></li>
-                <li><a href="#drugallergy" data-toggle="tab">ประวัติการแพ้ยา</a></li>
-                <li><a href="#chronic" data-toggle="tab" onclick="chronic()">โรคเรื้อรัง</a></li>
-                <li><a href="#history" data-toggle="tab">ประวัติการผ่าตัด</a></li>
+                <li class="active"><a href="#service_detail" data-toggle="tab"><i class="fa fa-plus-square text-green"></i> ข้อมูลการรับบริการ</a></li>
+                <li><a href="#drugallergy" data-toggle="tab"><i class="fa fa-history text-red"></i> ประวัติการแพ้ยา</a></li>
+                <li><a href="#chronic" data-toggle="tab" onclick="chronic()"> <i class="fa fa-bug text-blue"></i> โรคเรื้อรัง</a></li>
+                <li><a href="#history" data-toggle="tab"><i class="fa fa-hotel text-orange"></i> ประวัติการผ่าตัด</a></li>
             </ul>
-            <div class="tab-content">
-                <div class="active tab-pane" id="service_detail">ไม่มีข้อมูล ...</div>
-                <div class="tab-pane" id="drugallergy">ไม่มีข้อมูล ...</div>
-                <div class="tab-pane" id="chronic">ไม่มีข้อมูล ...</div>
-                <div class="tab-pane" id="history">ไม่มีข้อมูล ...</div>
+            <div class="tab-content" id="content-service">
+                <div class="active tab-pane" id="service_detail"><center>ไม่มีข้อมูล ...</center></div>
+                <div class="tab-pane" id="drugallergy"><center>ไม่มีข้อมูล ...</center></div>
+                <div class="tab-pane" id="chronic"><center>ไม่มีข้อมูล ...</center></div>
+                <div class="tab-pane" id="history"><center>ไม่มีข้อมูล ...</center></div>
                 <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->
@@ -76,7 +76,7 @@ use yii\helpers\Url;
             ######################## วินิจฉัย  Diagnosis ########################
         -->
         <div class="box box-default">
-            <div class="box-header with-border">
+            <div class="box-header with-border bg-black-gradient">
                 <i class="fa fa-user-md"></i> วินิจฉัย
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -92,7 +92,7 @@ use yii\helpers\Url;
         -->
 
         <div class="box box-default">
-            <div class="box-header with-border">
+            <div class="box-header with-border bg-black-gradient">
                 <h3 class="box-title">ข้อมูลอื่น ๆ</h3>
             </div>
             <!-- /.box-header -->
@@ -102,43 +102,55 @@ use yii\helpers\Url;
                 <div class="row">
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" onclick="drug('รายการยา')">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" 
+                                data-toggle="tooltip" data-trigger="hover" title="รายการยา" data-placement="top"
+                                onclick="drug('รายการยา')">
                             <i class="fa fa-file-text fa-2x text-green"></i> <br/>รายการยา
                         </button>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" onclick="procedure_opd('หัตถการ')">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" 
+                                data-toggle="tooltip" data-trigger="hover" title="หัตถการ" data-placement="top"
+                                onclick="procedure('หัตถการ')">
                             <i class="fa fa-stethoscope fa-2x text-blue"></i> <br/>หัตถการ
                         </button>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;"
+                                data-toggle="tooltip" data-trigger="hover" title="แล็บ" data-placement="top"
+                                onclick="labfu('แล็บ')">
                             <i class="fa fa-hospital-o fa-2x text-orange"></i> <br/>แล็บ
                         </button>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;"
+                                data-toggle="tooltip" data-trigger="hover" title="เอ็กซเรย์" data-placement="top">
                             <i class="fa fa-heartbeat fa-2x text-red"></i> <br/>เอ็กซเรย์
                         </button>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" 
+                                data-toggle="tooltip" data-trigger="hover" title="การรับวัคซีน" data-placement="top"
+                                onclick="epi('การรับวัคซีน')">
                             <i class="fa fa-eyedropper fa-2x text-blue"></i> <br/>การรับวัคซีน
                         </button>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;"
+                                data-toggle="tooltip" data-trigger="hover" title="ค่าใช้จ่าย" data-placement="top" onclick="expenses('ค่าใช้จ่าย')">
                             <i class="fa fa-money fa-2x text-green"></i> <br/>ค่าใช้จ่าย
                         </button>
                     </div>
 
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" onclick="appoint('การนัดหมาย')">
+                        <button type="button" class="btn btn-default btn-flat btn-block" style="margin-bottom: 10px;" 
+                                data-toggle="tooltip" data-trigger="hover" title="การนัดหมาย" data-placement="top"
+                                onclick="appoint('การนัดหมาย')">
                             <i class="fa fa-repeat fa-2x text-red"></i> <br/>การนัดหมาย
                         </button>
                     </div>
@@ -163,17 +175,12 @@ use yii\helpers\Url;
 -->
 <div class="modal" id="popup-detail">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content bg-blue-active">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" style=" color: #cccccc;"><i class="fa fa-ellipsis-v"></i> <font id="head-popup"></font></h4>
+                <h4 class="modal-title" style=" color: #FFF;"><i class="fa fa-ellipsis-v"></i> <font id="head-popup"></font></h4>
             </div>
-            <div class="modal-body">
-                <div id="box-show-detail"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal"><i class="fa fa-remove text-red"></i></button>
-            </div>
+            <div id="box-show-detail" style=" background: #FFF; color: #000;"></div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

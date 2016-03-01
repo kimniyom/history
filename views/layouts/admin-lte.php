@@ -26,7 +26,7 @@ $this->title = "ประวัติผู้ป่วย";
         <?php $this->head() ?>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     </head>
-    <body class="skin-blue-light fixed">
+    <body class="skin-blue fixed">
         <?php $this->beginBody() ?>
 
         <div class="wrapper">
@@ -49,16 +49,19 @@ $this->title = "ประวัติผู้ป่วย";
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li class="dropdown user user-menu" style=" padding-top: 10px;">
-                                <input type="text" id="PID" class="form-control input-sm" placeholder="PID" readonly="readonly"/>
+                                <input type="text" id="PERSONCID" class="form-control input-sm" placeholder="PERSONCID" readonly="readonly"/>
                             </li>
                             <li class="dropdown user user-menu" style=" padding-top: 10px;">
-                                <input type="text" id="HOSPCODE" class="form-control input-sm" placeholder="สถานบริการ" readonly="readonly"/>
+                                <input type="hidden" id="PID" class="form-control input-sm" placeholder="PID" readonly="readonly"/>
                             </li>
                             <li class="dropdown user user-menu" style=" padding-top: 10px;">
-                                <input type="text" id="SEQ" class="form-control input-sm" placeholder="คิว" readonly="readonly"/>
+                                <input type="hidden" id="HOSPCODE" class="form-control input-sm" placeholder="สถานบริการ" readonly="readonly"/>
                             </li>
                             <li class="dropdown user user-menu" style=" padding-top: 10px;">
-                                <input type="text" id="DATE_SERVICE" class="form-control input-sm" placeholder="วันที่รับบริการ" readonly="readonly"/>
+                                <input type="hidden" id="SEQ" class="form-control input-sm" placeholder="คิว" readonly="readonly"/>
+                            </li>
+                            <li class="dropdown user user-menu" style=" padding-top: 10px;">
+                                <input type="hidden" id="DATE_SERVICE" class="form-control input-sm" placeholder="วันที่รับบริการ" readonly="readonly"/>
                             </li>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
@@ -134,18 +137,23 @@ $this->title = "ประวัติผู้ป่วย";
                         </center>
                     </ul>
 
+                    <br/><br/>
+
+                    <font style=" font-size: 12px; color: #cccccc;">
+                    สำนักงานสาธารณสุขจังหวัดตาก<br/>
+                    เวอร์ชัน 2015
+                    </font>
+
                 </section>
                 <!-- /.sidebar -->
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+            <div class="content-wrapper" style=" background: #000000;">
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin: 0px;padding: 0px; border-radius: 0px;">
                     <h4 style="margin: 0px; font-size: 14px;">
-                        <?php
-                        //echo Yii::$app->request->baseUrl;
-                        ?>
+
                         <?=
                         Breadcrumbs::widget([
                             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -159,13 +167,12 @@ $this->title = "ประวัติผู้ป่วย";
                     <?= $content ?>
                 </section><!-- /.content -->
 
-
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
                     <b>Version</b> 2.2.0
                 </div>
-                <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+                <strong>Copyright &copy; 2015-2016 </strong>
             </footer>
             <!-- Add the sidebar's background. This div must be placed
                  immediately after the control sidebar -->
@@ -182,7 +189,7 @@ $this->title = "ประวัติผู้ป่วย";
     ############## Dialog Search ##############
 -->
 <div class="modal fade" id="dialog_search">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -320,9 +327,11 @@ $this->title = "ประวัติผู้ป่วย";
     }
 
     function get_service(cid, pid, hospcode) {
+        get_service_detail();
+        get_diag();
         $("#PID").val(pid);
         $("#HOSPCODE").val(hospcode);
-
+        $("#PERSONCID").val(cid);
         get_detail(cid);
         get_drugallergy(hospcode, pid);//ดึงข้อมูลการแพ้ยา
 
@@ -401,5 +410,35 @@ $this->title = "ประวัติผู้ป่วย";
 
     function show_service_full() {
         $("#popup-service-full").modal();
+    }
+
+    //ข้อมูลยา
+    function get_diag(hospcode, pid, seq) {
+        var url = "<?php echo Url::to(['search/get_diag']) ?>";
+        var data = {
+            hospcode: hospcode,
+            pid: pid,
+            seq: seq
+        };
+        $("#diagnosis").html("<center><i class='fa fa-spinner  fa-spin'></i></center>");
+
+        $.post(url, data, function (result) {
+            $("#diagnosis").html(result);
+        });
+    }
+
+//ข้อมูลการมารับบริการ ณ ครั้งนั้น
+    function get_service_detail(hospcode, cid, seq) {
+        var url = "<?php echo Url::to(['search/get_service_detail']) ?>";
+        var data = {
+            hospcode: hospcode,
+            cid: cid,
+            seq: seq
+        };
+        $("#service_detail").html("<center><i class='fa fa-spinner  fa-spin'></i></center>");
+
+        $.post(url, data, function (result) {
+            $("#service_detail").html(result);
+        });
     }
 </script>

@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 20, 2016, 10:23:46 PM
+    Author     : Kimniyom
+*/
+
+#bg-content{
+    background: #000;
+}
+
+#navigator{
+    border-radius: 0px;
+}
+
+#sitebar-left{
+    background: #101010;
+}
+
+.breadcrumb{
+    border-radius: 0px;
+    padding: 11px;
+    background: #990000;
+}
+
+.breadcrumb li a{
+    color: #FFF;
+}
+
+.breadcrumb .active{
+    color: #cccccc;
+}
+
+#head-sitebar{
+    background: #dd4b39;
+}
+
+.div-table{
+    
+}
+.div-table table thead tr{
+    background: #990000;
+}
+
+.div-table table thead tr th{
+    background: #990000;
+    padding: 10px;
+}
+
+.div-table table tbody tr:nth-child(even) {
+    background-color: #333333;
+    color: #dd4b39;
+    border-color: #000000;
+}
+
+.div-table table tbody tr:nth-child(odd) {
+    background-color: #000000;
+    color: #dd4b39;
+    border-color: #dd4b39;
+}
+
+.div-table table tbody td{
+    padding: 5px;
+}

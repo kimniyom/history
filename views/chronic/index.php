@@ -11,19 +11,24 @@
 <?php
 $drug = new app\models\Drugallergy;
 ?>
-<table class="table table-striped" id="tb_drugallergy">
-    <thead>
-        <tr>
-            <th>รหัสโรค</th>
-            <th>โรคเรื้อรัง</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($model as $rs): ?>
+<?php if (!empty($model)) { ?>
+    <table class="table table-striped" id="tb_drugallergy">
+        <thead>
             <tr>
-                <td><?php echo $rs['CHRONIC'] ?></td>
-                <td><?php echo $rs['DIAG_THAI_NAME'] ?></td>
+                <th>รหัสโรค</th>
+                <th>โรคเรื้อรัง</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($model as $rs): ?>
+                <tr>
+                    <td><?php echo $rs['CHRONIC'] ?></td>
+                    <td><?php echo $rs['DIAG_THAI_NAME'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+<?php } else { ?>
+    <center>ไม่มีข้อมูล</center>
+<?php } ?>

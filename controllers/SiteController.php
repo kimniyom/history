@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\web\Session;
+use app\models\Masuser;
+use app\models\Privilege;
 
 class SiteController extends Controller {
 
@@ -57,33 +59,30 @@ class SiteController extends Controller {
     }
 
     public function actionLogin() {
+        $Model = new Masuser();
+
         $request = \Yii::$app->request;
         $username = $request->post('username');
-        $password = $request->post('password');
-        if ($username == 'admin' && $password == 'admin') {
-            \Yii::$app->session['username'] = $username;
-            \Yii::$app->session['hosname'] = "สสจ.ตาก";
-            \Yii::$app->session['user'] = true;
-            $flag = "1";
+        $passwordInput = $request->post('password');
+
+        $Auth = $Model->Auth($username);
+        if (!empty($Auth)) {
+            if ($Auth['password'] == $passwordInput) {
+                \Yii::$app->session['username'] = $username;
+                \Yii::$app->session['userId'] = $Auth['id'];
+                \Yii::$app->session['user'] = true;
+
+                //Set Privilege In Session
+                $Privilege = new Privilege();
+                $Privilege->getPrivilege($Auth['id']);
+
+                $flag = "1";
+            } else {
+                $flag = "0";
+            }
         } else {
             $flag = "0";
         }
-
-        echo $flag;
-        /*
-          if (!\Yii::$app->user->isGuest) {
-          return $this->goHome();
-          }
-
-          $model = new LoginForm();
-          if ($model->load(Yii::$app->request->post()) && $model->login()) {
-          return $this->goBack();
-          }
-          return $this->render('login', [
-          'model' => $model,
-          ]);
-         * 
-         */
     }
 
     public function actionLogout() {

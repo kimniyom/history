@@ -11,23 +11,27 @@
 <?php
 $drug = new app\models\Drugallergy;
 ?>
-<table class="table table-striped" id="tb_drugallergy">
-    <thead>
-        <tr>
-            <th>รหัสยา</th>
-            <th>ชื่อยา</th>
-            <th>ประเภทการวินิจฉัย</th>
-            <th>ระดับความรุนแรง</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($result as $rs): ?>
+<?php if (!empty($result)) { ?>
+    <table class="table table-striped" id="tb_drugallergy">
+        <thead>
             <tr>
-                <td><?php echo $rs['DRUGALLERGY'] ?></td>
-                <td><?php echo $rs['DNAME'] ?></td>
-                <td><?php echo $drug->Type_dx($rs['TYPEDX']) ?></td>
-                <td><?php echo $rs['ALEVEL'] ?></td>
+                <th>รหัสยา</th>
+                <th>ชื่อยา</th>
+                <th>ประเภทการวินิจฉัย</th>
+                <th>ระดับความรุนแรง</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($result as $rs): ?>
+                <tr>
+                    <td><?php echo $rs['DRUGALLERGY'] ?></td>
+                    <td><?php echo $rs['DNAME'] ?></td>
+                    <td><?php echo $drug->Type_dx($rs['TYPEDX']) ?></td>
+                    <td><?php echo $rs['ALEVEL'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php } else { ?>
+    <center>ไม่มีข้อมูล</center>
+<?php } ?>

@@ -31,7 +31,7 @@ function chronic() {
 //ข้อมูลรายการยา ณ วันที่ นั้น ๆ ทั้ง บันทึกผู้ป่วยนอก
 function drug(head) {
     var loading = "<center><i class='fa fa-spinner fa-spin text-success'></i></center>";
-    var url = "index.php?r=drug-opd/index";
+    var url = "index.php?r=drug/index";
     var HOSPCODE = $("#HOSPCODE").val();
     var PID = $("#PID").val();
     var SEQ = $("#SEQ").val();
@@ -51,9 +51,9 @@ function drug(head) {
 }
 
 //ข้อมูลรายหัตถการ ณ วันที่ นั้น ๆ ทั้ง บันทึกผู้ป่วยนอก
-function procedure_opd(head) {
+function procedure(head) {
     var loading = "<center><i class='fa fa-spinner fa-spin text-success'></i></center>";
-    var url = "index.php?r=procedure-opd/index";
+    var url = "index.php?r=procedure/index";
     var HOSPCODE = $("#HOSPCODE").val();
     var PID = $("#PID").val();
     var SEQ = $("#SEQ").val();
@@ -72,7 +72,7 @@ function procedure_opd(head) {
     });
 }
 
-
+//ข้อมูลการนัด 
 function appoint(head) {
     var loading = "<center><i class='fa fa-spinner fa-spin text-success'></i></center>";
     var url = "index.php?r=appointment/view";
@@ -83,7 +83,7 @@ function appoint(head) {
         HOSPCODE: HOSPCODE,
         PID: PID,
         SEQ: SEQ};
-    
+
     $("#head-popup").text(head);
     $("#popup-detail").modal();
 
@@ -129,6 +129,72 @@ function appointment_all() {
         $("#appointment_all").html(result);
     });
 }
+
+//ข้อมูลการรับวัคซีน 
+function epi(head) {
+    var loading = "<center><i class='fa fa-spinner fa-spin text-success'></i></center>";
+    var url = "index.php?r=epi/index";
+    var CID = $("#PERSONCID").val();
+    var data = {
+        CID: CID
+    };
+
+    $("#head-popup").text(head);
+    $("#popup-detail").modal();
+
+    $("#box-show-detail").html(loading);
+
+    $.post(url, data, function (result) {
+        $("#box-show-detail").html(result);
+    });
+}
+
+//ข้อมูลรายการค่าใช้จ่าย ผู้ป่วยนอก
+function expenses(head) {
+    var loading = "<center><i class='fa fa-spinner fa-spin text-success'></i></center>";
+    var url = "index.php?r=expenses/index";
+    var HOSPCODE = $("#HOSPCODE").val();
+    var PID = $("#PID").val();
+    var SEQ = $("#SEQ").val();
+    var data = {
+        HOSPCODE: HOSPCODE,
+        PID: PID,
+        SEQ: SEQ
+    };
+
+    $("#head-popup").text(head);
+    $("#popup-detail").modal();
+
+    $("#box-show-detail").html(loading);
+
+    $.post(url, data, function (result) {
+        $("#box-show-detail").html(result);
+    });
+}
+
+//ข้อมูลแล็บ
+function labfu(head) {
+    var loading = "<center><i class='fa fa-spinner fa-spin text-success'></i></center>";
+    var url = "index.php?r=labfu/index";
+    var HOSPCODE = $("#HOSPCODE").val();
+    var PID = $("#PID").val();
+    var SEQ = $("#SEQ").val();
+    var data = {
+        HOSPCODE: HOSPCODE,
+        PID: PID,
+        SEQ: SEQ
+    };
+
+    $("#head-popup").text(head);
+    $("#popup-detail").modal();
+
+    $("#box-show-detail").html(loading);
+
+    $.post(url, data, function (result) {
+        $("#box-show-detail").html(result);
+    });
+}
+
 
 
 

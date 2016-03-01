@@ -24,8 +24,14 @@ $drug = new app\models\Drugallergy;
             <tr>
                 <td><?php echo $rs['DIDSTD'] ?></td>
                 <td><?php echo $rs['DNAME'] ?></td>
-                <td><?php echo $rs['AMOUNT'] ?></td>
+                <td><?php echo $rs['AMOUNT'].$rs['UNIT_NAME'] ?> sddgdg</td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tb_drug_opd").dataTable();
+    });
+</script>

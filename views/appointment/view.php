@@ -45,7 +45,7 @@
             </table>
         </div>
         <div class="tab-pane" id="appointment_all">
-            <div class="active tab-pane" id="appointment_now">
+            <div class="active tab-pane" id="appointment_all">
                 <table class="table table-striped" id="tb_appoint_all">
                     <thead>
                         <tr>
@@ -71,7 +71,6 @@
     <!-- /.tab-content -->
 </div>
 <!-- /.nav-tabs-custom -->
-
 
 <script>
     $(document).ready(function () {

@@ -2,40 +2,28 @@
     .active-menu-history{
         background: #ffff00;
     }
-    #list_history tbody tr{
+    #list_history tbody tr .trueprivilege:hover{
         cursor: pointer;
     }
     #list_history tbody tr td{
         font-size: 12px;
         border: #999999 dotted 1px;
         text-align: left;
-        color: #33cc00;
+        color: #ff6600;
     }
     #list_history thead tr th{
         font-size: 12px;
         border-bottom: none;
+    }
+
+    #list_history tbody tr .nonPrivilege{
+        color: #999999;
     }
 </style>
 <?php
 
 use yii\helpers\Url;
 ?>
-<?php
-/*
-  $i = 0;
-  foreach ($result as $rs): $i++;
-
- * ?>
- */
-?>
-<!--
-    <li>
-        <a href="<?//php echo Url::to(['']); ?>" data-toggle="tooltip" data-trigger="hover" title="Popover title" data-placement="top">
-            <i class="fa fa-calendar-o text-red"></i> <?//php echo $rs['DATE_SERV'] ?><?//php echo $rs['HOSPCODE'] ?></a>
-    </li>
--->
-<?php //endforeach;  ?>
-
 
 <li><a href="javascript:popup_dialog()"><i class="fa fa-search text-yellow"></i> <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a></li>
 <li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ 
@@ -45,7 +33,6 @@ use yii\helpers\Url;
         <i class="fa fa-expand"></i>
     </button>
 </li>
-
 
 <table class="table table-hover" id="list_history" style=" width: 100%; margin-top: 0px;">
     <thead>
@@ -59,14 +46,26 @@ use yii\helpers\Url;
     <tbody>
         <?php
         $i = 0;
+        $Privilege = Yii::$app->session['privilege'];
         foreach ($result as $rs): $i++;
-            ?>
-            <tr onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>', '<?php echo $rs['CID'] ?>', '<?php echo $rs['DATE_SERV']; ?>')" id="<?php echo $i; ?>">
-                <td><?php echo $i; ?></td>
-                <td><?php echo $rs['DATE_SERV']; ?></td>
-                <td data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
-                <td><?php echo "อาการ " . $rs['CHIEFCOMP'] ?></td>
-            </tr>
+            if (in_array($rs['HOSPCODE'],$Privilege)) {
+                ?>
+                <tr class="trueprivilege"
+                    onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>', '<?php echo $rs['CID'] ?>', '<?php echo $rs['DATE_SERV']; ?>')" id="<?php echo $i; ?>">
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $rs['DATE_SERV']; ?></td>
+                    <td data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
+                    <td><?php echo "อาการ " . $rs['CHIEFCOMP'] ?></td>
+                </tr>
+            <?php } else { ?>
+                <tr class="nonPrivilege">
+                    <td class="nonPrivilege"><?php echo $i; ?></td>
+                    <td class="nonPrivilege"><?php echo $rs['DATE_SERV']; ?></td>
+                    <td class="nonPrivilege"
+                        data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
+                    <td class="nonPrivilege"><?php echo "อาการ " . $rs['CHIEFCOMP'] ?></td>
+                </tr>
+            <?php } ?>
         <?php endforeach; ?>
     </tbody>
 </table>
@@ -81,8 +80,8 @@ use yii\helpers\Url;
             "ordering": true,
             "info": true,
             "autoWidth": false,
-            "scrollX": true
-                    //"scrollY": "250px"
+            "scrollX": true,
+            "scrollY": "350px"
         });
     });
 
@@ -90,9 +89,11 @@ use yii\helpers\Url;
         //$(this).addClass("active-menu-history");
         $("#popup-service-full").modal("hide");
         $("#list_history tbody tr").removeClass("active-menu-history");
+        $("#history_full tbody tr").removeClass("active-menu-history");
         $("#" + id).each(function () {
             // checks if its the same on the address bar
             $(this).addClass("active-menu-history");
+            $("#history_full tbody #" + id).addClass("active-menu-history");
         });
 
         $("#SEQ").val(seq);
@@ -104,33 +105,5 @@ use yii\helpers\Url;
          procedure_opd(hospcode, pid, seq);//ดึงข้อมูลหัตถการ คำสั่งอยู่ที่ store.js
          appointment(hospcode, pid, seq);//ดึงข้อมูลการนัด คำสั่งอยู่ที่ store.js
          */
-    }
-
-    function get_diag(hospcode, pid, seq) {
-        var url = "<?php echo Url::to(['search/get_diag']) ?>";
-        var data = {
-            hospcode: hospcode,
-            pid: pid,
-            seq: seq
-        };
-        $("#diagnosis").html("<center><i class='fa fa-spinner  fa-spin'></i></center>");
-
-        $.post(url, data, function (result) {
-            $("#diagnosis").html(result);
-        });
-    }
-
-    function get_service_detail(hospcode, cid, seq) {
-        var url = "<?php echo Url::to(['search/get_service_detail']) ?>";
-        var data = {
-            hospcode: hospcode,
-            cid: cid,
-            seq: seq
-        };
-        $("#service_detail").html("<center><i class='fa fa-spinner  fa-spin'></i></center>");
-
-        $.post(url, data, function (result) {
-            $("#service_detail").html(result);
-        });
     }
 </script>

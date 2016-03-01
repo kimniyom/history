@@ -27,3 +27,9 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tb_procedure_opd").dataTable();
+    });
+</script>

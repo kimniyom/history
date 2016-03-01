@@ -73,7 +73,7 @@
 
 ::-webkit-scrollbar-thumb
 {
-    background: #FFFFFF;
+    background: #990000;
 }
 
 .text-red{
@@ -90,4 +90,20 @@
 
 .text-blue{
     color: #3399ff;
+}
+
+#hr{
+    border-bottom:#999999 3px solid;
+}
+
+
+#btn-circle{
+    padding: 12px 15px;
+    border-radius: 50px;
+}
+
+#content-service .tab-pane{
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

@@ -1,4 +1,4 @@
-<style type="text/javascript">
+<style type="text/css">
     #form-service .form-control{ color: #ff0000;}
 </style>
 <?php
@@ -7,11 +7,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 use app\models\Config_system;
 
 $config = new Config_system();
-
-
 ?>
 
 <div class="row" id="form-service">
@@ -19,11 +18,18 @@ $config = new Config_system();
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">วันที่มารับบริการ</div>
-                <input type="text" class="form-control" id="DATE_SERV"  value="<?php echo $config->ThaiDateNoFormat($model['DATE_SERV']) ?>" readonly="readonly">
+                <?php
+                if (!empty($model['DATE_SERV'])) {
+                    $dateServie = $config->ThaiDateNoFormat($model['DATE_SERV']);
+                } else {
+                    $dateServie = "";
+                }
+                ?>
+                <input type="text" class="form-control" id="DATE_SERV"  value="<?php echo $dateServie ?>" readonly="readonly">
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -32,7 +38,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -41,7 +47,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-3 col-lg-3">
         <div class="form-group">
             <div class="input-group">
@@ -50,7 +56,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-9 col-lg-9">
         <div class="form-group">
             <div class="input-group">
@@ -59,7 +65,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="form-group">
             <div class="input-group">
@@ -68,7 +74,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -77,7 +83,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -86,7 +92,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -95,7 +101,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -104,7 +110,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -113,7 +119,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -122,7 +128,7 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
@@ -131,8 +137,8 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
-     <div class="col-sm-12 col-md-4 col-lg-4">
+
+    <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">จ่ายจริง</div>
@@ -140,5 +146,5 @@ $config = new Config_system();
             </div>
         </div>
     </div>
-    
+
 </div>

@@ -2,7 +2,7 @@
 <div class="box box-success">
     <div class="box-header with-border">รายชื่อที่ค้นหา</div>
     <div class="box-body">
-        <table class="table table-striped">
+        <table class="table table-striped" id="tb_patient">
             <thead>
                 <tr>
                     <th>#</th>
@@ -31,3 +31,9 @@
         </table>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tb_patient").dataTable();
+    });
+</script>
