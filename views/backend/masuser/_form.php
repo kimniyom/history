@@ -7,9 +7,10 @@ use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use app\models\CoOffice;
+use app\models\MasPrename;
 
 $office = new CoOffice();
-
+$prename = new MasPrename();
 /* @var $this yii\web\View */
 /* @var $model app\models\Masuser */
 /* @var $form yii\widgets\ActiveForm */
@@ -28,12 +29,28 @@ $office = new CoOffice();
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
+    <?php
+    // Normal select with ActiveForm & model
+    $data = ArrayHelper::map($prename->get_prename(), 'OID', 'NAME');
+    echo $form->field($model, 'prename')->widget(Select2::classname(), [
+        'data' => $data,
+        'language' => 'th',
+        'options' => ['placeholder' => 'คำนำหน้าชื่อ ...'],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]);
+    ?> 
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'card')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
     <?php
     // Normal select with ActiveForm & model
     $data = ArrayHelper::map($office->get_office(), 'off_id', 'off_name');

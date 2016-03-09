@@ -32,15 +32,21 @@ class Masuser extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['username', 'password', 'name', 'lname', 'card', 'hospcode'], 'required'],
-            [['flag'], 'integer'],
-            [['create_date'], 'safe'],
-            [['username', 'password'], 'string', 'max' => 50],
-            [['name', 'lname'], 'string', 'max' => 100],
-            [['card'], 'string', 'max' => 13],
-            [['hospcode'], 'string', 'max' => 10],
-            [['card'], 'string', 'length' => 13],
-        ];
+                    [
+                        ['username', 'password', 'name', 'lname', 'card', 'hospcode','prename','email','tel'], 
+                        'required'
+                    ],
+                    [['flag','prename'], 'integer'],
+                    [['create_date'], 'safe'],
+                    [['username', 'password'], 'string', 'max' => 50],
+                    [['name', 'lname'], 'string', 'max' => 100],
+                    [['card'], 'string', 'max' => 13],
+                    [['email'], 'email'],
+                    [['tel'], 'integer'],
+                    ['tel','string','length' => [10,10]],
+                    [['hospcode'], 'string', 'max' => 10],
+                    [['card'], 'string', 'length' => 13],
+                ];
     }
 
     /**
@@ -51,10 +57,13 @@ class Masuser extends \yii\db\ActiveRecord {
             'id' => 'ID',
             'username' => 'Username',
             'password' => 'Password',
+            'prename' => 'prename',
             'name' => 'Name',
             'lname' => 'Lname',
             'card' => 'Card',
             'hospcode' => 'Hospcode',
+            'email' => 'email',
+            'tel' => 'tel',
             'flag' => 'Flag',
             'create_date' => 'Create Date',
         ];
@@ -69,6 +78,14 @@ class Masuser extends \yii\db\ActiveRecord {
 
         $rows = $db->one();
         return $rows;
+    }
+
+    public function Getuser($userId = null){
+        $sql = "SELECT m.*,o.off_name
+                FROM masuser m INNER JOIN co_office o ON m.hospcode = o.off_id
+                WHERE m.id = '$userId' ";
+        return Yii::$app->db->createCommand($sql)
+            ->queryOne();
     }
 
 }

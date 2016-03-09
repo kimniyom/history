@@ -98,6 +98,13 @@ class CoOffice extends \yii\db\ActiveRecord {
         return \Yii::$app->db->createCommand($sql)->queryAll();
     }
 
+    public function Pcuname($off_id = null){
+        $sql = "SELECT off_name 
+                FROM co_office 
+                WHERE off_id = '$off_id'";
+        $rs = \Yii::$app->db->createCommand($sql)->queryOne();
 
+        return $rs['off_name'];
+    }
 
 }

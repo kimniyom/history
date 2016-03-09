@@ -24,7 +24,7 @@ class SearchController extends Controller {
         $name = $request->post('name');
         $surname = $request->post('lname');
 
-        $result = $model->PatientSearch($cid, $name, $surname);
+        $result = $model->PatientSearch(trim($cid), trim($name), trim($surname));
         return $this->renderPartial('patient', [
                     "result" => $result,
         ]);
@@ -34,6 +34,17 @@ class SearchController extends Controller {
     public function actionGet_service() {
         $cid = \Yii::$app->request->post('cid');
         $model = new \app\models\SearchModel();
+
+        //Add Log 
+        $columns = array(
+            "person_cid" => $cid,
+            "owner" => Yii::$app->session['userId'],
+            "create_date" => date("Y-m-d H:i:s")
+            );
+
+        Yii::$app->db->createCommand()
+            ->insert("log_open",$columns)
+            ->execute();
 
         $result = $model->GetService($cid);
         return $this->renderPartial('service', [

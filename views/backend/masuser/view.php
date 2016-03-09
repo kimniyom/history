@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use app\models\CoOffice;
 /* @var $this yii\web\View */
 /* @var $model app\models\Masuser */
-
+$Cooffice = new CoOffice();
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'ผู้ใช้งาน', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -37,8 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'lname',
             'card',
-            'hospcode',
-            'flag',
+            'email',
+            'tel',
+            [
+                'attribute' => 'hospcode',
+                'label'  => 'hospcode',
+                'format'=>'raw',
+                'value' => $Cooffice->Pcuname($model->hospcode),
+            ],
             'create_date',
         ],
     ])

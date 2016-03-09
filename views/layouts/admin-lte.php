@@ -65,7 +65,7 @@ $this->title = "ประวัติผู้ป่วย";
                             </li>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="javascript:popup_dialog()" class="dropdown-toggle">
+                                <a href="javascript:popup_dialog()" class="dropdown-toggle" id="btn-search">
                                     <img src="<?php echo Url::to('@web/web/images/recherche-icon.png'); ?>" class="user-image" alt="User Image" />
                                     ค้นหาผู้ป่วย
                                 </a>
@@ -75,6 +75,7 @@ $this->title = "ประวัติผู้ป่วย";
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-user"></i>
                                     <span class="hidden-xs"><?php echo Yii::$app->session['username'] ?></span>
+                                    <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
@@ -105,10 +106,14 @@ $this->title = "ประวัติผู้ป่วย";
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat"><i class="fa fa-cog text-green"></i> ส่วนตัว</a>
+                                            <a href="<?php echo Url::to(['users/index'])?>" 
+                                                class="btn btn-default btn-flat">
+                                            <i class="fa fa-cog text-green"></i> ส่วนตัว</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="javascript:logout()" class="btn btn-default btn-flat"><i class="fa fa-power-off text-red"></i> ออกจากระบบ</a>
+                                            <a href="javascript:logout()" 
+                                                class="btn btn-default btn-flat">
+                                            <i class="fa fa-power-off text-red"></i> ออกจากระบบ</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -125,7 +130,11 @@ $this->title = "ประวัติผู้ป่วย";
                 <section class="sidebar">
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" id="result_service">
-                        <li><a href="javascript:popup_dialog()"><i class="fa fa-search text-red"></i> <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a></li>
+                        <li id="btn-search-side">
+                        <a href="javascript:popup_dialog()">
+                            <i class="fa fa-search text-red"></i> 
+                            <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a>
+                        </li>
                         <li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ</li>
                         <!-- 
                         แสดงข้อมูลการมารับบริการ
@@ -139,7 +148,7 @@ $this->title = "ประวัติผู้ป่วย";
 
                     <br/><br/>
 
-                    <font style=" font-size: 12px; color: #cccccc;">
+                    <font style="font-size: 12px; color: #cccccc;">
                     สำนักงานสาธารณสุขจังหวัดตาก<br/>
                     เวอร์ชัน 2015
                     </font>
@@ -404,7 +413,7 @@ $this->title = "ประวัติผู้ป่วย";
         var data = {a: 1};
 
         $.post(url, data, function (success) {
-            window.location.reload();
+            window.location="<?php echo Url::to(['site/index'])?>";
         });
     }
 

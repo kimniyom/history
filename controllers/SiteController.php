@@ -89,6 +89,7 @@ class SiteController extends Controller {
         \Yii::$app->user->logout();
         $session = \Yii::$app->session;
         $session->destroy();
+        $this->redirect(['site/index'],302);
         //\Yii::$app->uns
     }
 
