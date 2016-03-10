@@ -51,7 +51,7 @@ class LogOpen extends \yii\db\ActiveRecord
         $sql = "SELECT l.*,p.NAME,p.LNAME
                 FROM log_open l INNER JOIN person p ON l.person_cid = p.cid
                 WHERE l.owner = '$userId'
-                ORDER BY id DESC ";
+                ORDER BY id DESC LIMIT 100";
         return Yii::$app->db->createCommand($sql)->queryAll();
     }
 }

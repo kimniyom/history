@@ -14,7 +14,9 @@
 }
 
 #bg-sidebar{
-    background: #FFFFFF;
+    border-right: solid 0px #cccccc;
+    box-shadow: 0px 0px 3px 0px #666666;
+    background: #2d323e;
 }
 
 #bg-head-sidebar{
@@ -44,8 +46,22 @@
     background: #232a37;
 }
 
+.control-logo{
+    border-bottom: solid 3px #cccccc;
+}
+
+
 #bg-nav-line{
-    background: #2d3649;
+    background: #454954;
+    color: #cccccc;
+}
+
+#bg-nav-line a{
+    color: #cccccc;
+}
+
+#bg-nav-line .tab-panel{
+
 }
 
 #btn{
@@ -106,4 +122,52 @@
     height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
+    background: #22252c;
+    margin: 0px;
+}
+
+#content-service{
+    background: #22252c;
+}
+
+
+#content-service input{
+    background: #454954;
+    border: none;
+}
+
+#content-service #textarea{
+    background: #454954;
+    border: none;
+}
+
+
+#content-service .input-group-addon{
+    background: #2e3138;
+    border: none;
+    color: #FFFFFF;
+}
+
+.main-header{
+    border-bottom: 0px solid #cccccc;
+    box-shadow: 0px 0px 5px 0px #666666;
+}
+
+#bg-content{
+    background: #2e3138;
+}
+
+
+#btn-mt{
+    border:none;
+    border-radius: 0px;
+    box-shadow: 0px 0px 3px 0px #cccccc;
+}
+
+#btn-mt hover{
+    opacity: 0.8;
+}
+
+#popup-detail table{
+    background: #FFFFFF;
 }

@@ -1,5 +1,5 @@
 <style type="text/css">
-    #form-service .form-control{ color: #ff0000;}
+    #form-service .form-control{ color: #33ff00;}
 </style>
 <?php
 /*
@@ -70,35 +70,64 @@ $config = new Config_system();
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon">อาการสำคัญ</div>
-                <textarea class="form-control" rows="3" readonly="readonly"><?php echo $model['CHIEFCOMP'] ?></textarea>
+                <textarea class="form-control" rows="3" readonly="readonly" id="textarea"><?php echo $model['CHIEFCOMP'] ?></textarea>
             </div>
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">ความดันโลหิต</div>
-                <input type="text" class="form-control" id="SBP" value="<?php echo $model['SBP'] . "/" . $model['DBP'] ?>" readonly="readonly">
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3><?php echo $model['SBP'] . "/" . $model['DBP'] ?></h3>
+                <p>ความดันโลหิต(SBP)</p>
             </div>
+            <div class="icon">
+                <i class="fa fa-user"></i>
+            </div>
+
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">การเต้นของชีพจร</div>
-                <input type="text" class="form-control" id="PR" value="<?php echo $model['PR'] ?>" readonly="readonly">
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3><?php echo $model['PR'] ?></h3>
+                <p>การเต้นของชีพจร(PR)</p>
             </div>
+            <div class="icon">
+                <i class="fa fa-heartbeat"></i>
+            </div>
+
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">อัตราการหายใจ</div>
-                <input type="text" class="form-control" id="RR" value="<?php echo $model['RR'] ?>" readonly="readonly">
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3><?php echo $model['RR'] ?></h3>
+                <p>อัตราการหายใจ(RR)</p>
             </div>
+            <div class="icon">
+                <i class="fa fa-heart"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <!-- small box -->
+        <div class="small-box bg-blue">
+            <div class="inner">
+                <h3><?php echo $model['BTEMP'] ?></h3>
+                <p>อุณหภูมิร่างกาย(BTEMP)</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-child"></i>
+            </div>
+
         </div>
     </div>
 
@@ -107,15 +136,6 @@ $config = new Config_system();
             <div class="input-group">
                 <div class="input-group-addon">สิทธิการรักษาที่ใช้</div>
                 <input type="text" class="form-control" id="INSID" value="<?php echo $model['INSID'] ?>" readonly="readonly">
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon">อุณหภูมิร่างกาย</div>
-                <input type="text" class="form-control" id="BTEMP" value="<?php echo $model['BTEMP'] ?>" readonly="readonly">
             </div>
         </div>
     </div>

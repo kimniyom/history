@@ -1,23 +1,35 @@
 <style type="text/css">
     .active-menu-history{
-        background: #ffff00;
+        background: #000000;
+        color:#ff6600;
+        font-weight: bold;
     }
+
     #list_history tbody tr .trueprivilege:hover{
         cursor: pointer;
     }
     #list_history tbody tr td{
-        font-size: 12px;
-        border: #999999 dotted 1px;
+        /*font-size: 12px;*/
+        /*border: #999999 dotted 1px;*/
         text-align: left;
         color: #ff6600;
     }
     #list_history thead tr th{
         font-size: 12px;
         border-bottom: none;
+        color: #ff6600;
     }
 
     #list_history tbody tr .nonPrivilege{
         color: #999999;
+    }
+
+    #list_history tbody tr td{
+        border: none;
+    }
+
+    #list_history tbody tr{
+        cursor: pointer;
     }
 </style>
 <?php
@@ -36,11 +48,14 @@ use yii\helpers\Url;
 
 <table class="table table-hover" id="list_history" style=" width: 100%; margin-top: 0px;">
     <thead>
-        <tr>
-            <th>#</th>
+        <tr style=" color: #FFF;">
+            <th style="display: none;">#</th>
+            <th></th>
             <th>วันที่</th>
             <th>สถานบริการ</th>
+            <!--
             <th>อาการ</th>
+            -->
         </tr>
     </thead>
     <tbody>
@@ -48,21 +63,28 @@ use yii\helpers\Url;
         $i = 0;
         $Privilege = Yii::$app->session['privilege'];
         foreach ($result as $rs): $i++;
-            if (in_array($rs['HOSPCODE'],$Privilege)) {
+            if (in_array($rs['HOSPCODE'], $Privilege)) {
                 ?>
                 <tr class="trueprivilege"
                     onclick="active_menu('<?php echo $i; ?>', '<?php echo $rs['HOSPCODE'] ?>', '<?php echo $rs['PID'] ?>', '<?php echo $rs['SEQ'] ?>', '<?php echo $rs['CID'] ?>', '<?php echo $rs['DATE_SERV']; ?>')" id="<?php echo $i; ?>">
-                    <td><?php echo $i; ?></td>
+                    <td style=" display: none;"><?php echo $i; ?></td>
+                    <td class="nonPrivilege"><i class="fa fa-calendar text-red"></i></td>
                     <td><?php echo $rs['DATE_SERV']; ?></td>
                     <td data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
-                    <td><?php echo "อาการ " . $rs['CHIEFCOMP'] ?></td>
+                    <!--
+                    <td><?//php echo "อาการ " . $rs['CHIEFCOMP'] ?></td>
+                    -->
                 </tr>
             <?php } else { ?>
                 <tr class="nonPrivilege">
-                    <td class="nonPrivilege"><?php echo $i; ?></td>
+                    <td style=" display: none;"><?php echo $i; ?></td>
+                    <td class="nonPrivilege"><i class="fa fa-calendar text-red"></i></td>
                     <td class="nonPrivilege"><?php echo $rs['DATE_SERV']; ?></td>
+                    <!--
                     <td class="nonPrivilege"
-                        data-toggle="tooltip" data-trigger="hover" title="<?php echo $rs['HOSPNAME']; ?>" data-placement="top"><?php echo $rs['HOSPCODE']; ?></td>
+                        data-toggle="tooltip" data-trigger="hover" title="<?//php echo $rs['HOSPNAME']; ?>" data-placement="top"><?//php echo $rs['HOSPCODE']; ?>
+                    </td>
+                    -->
                     <td class="nonPrivilege"><?php echo "อาการ " . $rs['CHIEFCOMP'] ?></td>
                 </tr>
             <?php } ?>

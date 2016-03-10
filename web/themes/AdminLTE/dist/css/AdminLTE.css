@@ -2380,13 +2380,13 @@ a:focus {
 /* NAV TABS */
 .nav-tabs-custom {
   margin-bottom: 20px;
-  background: #fff;
+  background: #454954;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .nav-tabs-custom > .nav-tabs {
   margin: 0;
-  border-bottom-color: #f4f4f4;
+  border-bottom-color: #22252c;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
@@ -2396,7 +2396,7 @@ a:focus {
   margin-right: 5px;
 }
 .nav-tabs-custom > .nav-tabs > li > a {
-  color: #444;
+  color: #FFFFFF;
   border-radius: 0 !important;
 }
 .nav-tabs-custom > .nav-tabs > li > a,
@@ -2417,13 +2417,13 @@ a:focus {
 }
 .nav-tabs-custom > .nav-tabs > li.active > a,
 .nav-tabs-custom > .nav-tabs > li.active:hover > a {
-  background-color: #fff;
-  color: #444;
+  background-color: #22252c;
+  color: #73cdff;
 }
 .nav-tabs-custom > .nav-tabs > li.active > a {
   border-top-color: transparent;
-  border-left-color: #f4f4f4;
-  border-right-color: #f4f4f4;
+  border-left-color: #22252c;
+  border-right-color: #22252c;
 }
 .nav-tabs-custom > .nav-tabs > li:first-of-type {
   margin-left: 0;
@@ -2459,10 +2459,11 @@ a:focus {
   margin-right: 5px;
 }
 .nav-tabs-custom > .tab-content {
-  background: #fff;
+  background: #22252c;
   padding: 10px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  color: #cccccc;
 }
 .nav-tabs-custom .dropdown.open > a:active,
 .nav-tabs-custom .dropdown.open > a:focus {

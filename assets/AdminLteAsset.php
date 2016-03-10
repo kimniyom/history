@@ -22,7 +22,7 @@ class AdminLteAsset extends AssetBundle {
         'web/themes/AdminLTE/css/system.css',
         'web/themes/AdminLTE/bootstrap/css/bootstrap.css',
         'web/themes/transport/font-awesome/css/font-awesome.css',
-        'web/themes/AdminLTE/dist/css/AdminLTE.min.css',
+        'web/themes/AdminLTE/dist/css/AdminLTE.css',
         'web/themes/AdminLTE/dist/css/skins/_all-skins.css',
         'web/themes/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css',
         'web/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',

@@ -25,7 +25,7 @@
     </ul>
     <div class="tab-content">
         <div class="active tab-pane" id="proced_opd">
-            <table class="table table-striped" id="tb_proced_opd">
+            <table class="table table" id="tb_proced_opd">
                 <thead>
                     <tr>
                         <th>รหัสหัตถการ</th>

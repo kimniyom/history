@@ -33,17 +33,23 @@ $this->title = "ประวัติผู้ป่วย";
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo" id="bg-head-sidebar-line">
+                <a class="logo control-logo" id="bg-head-sidebar-line">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>A</b>LT</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b><img src="<?php echo Url::to("@web/web/images/history-icon.png") ?>" width="32"/></b> ประวัติผู้ป่วย</span>
+                    <span class="logo-lg" style=" border-bottom: solid #ff6600 3px;">
+                        <b>
+                            <img src="<?php echo Url::to("@web/web/images/history-icon.png") ?>" width="32"/>
+                        </b> 
+                        ประวัติผู้ป่วย
+                    </span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation" id="bg-nav-line">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                         <span class="sr-only">Toggle navigation</span>
+                        MENU
                     </a>
 
                     <div class="navbar-custom-menu">
@@ -66,7 +72,7 @@ $this->title = "ประวัติผู้ป่วย";
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="javascript:popup_dialog()" class="dropdown-toggle" id="btn-search">
-                                    <img src="<?php echo Url::to('@web/web/images/recherche-icon.png'); ?>" class="user-image" alt="User Image" />
+                                    <i class="fa fa-search"></i>
                                     ค้นหาผู้ป่วย
                                 </a>
                             </li>
@@ -106,14 +112,14 @@ $this->title = "ประวัติผู้ป่วย";
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="<?php echo Url::to(['users/index'])?>" 
-                                                class="btn btn-default btn-flat">
-                                            <i class="fa fa-cog text-green"></i> ส่วนตัว</a>
+                                            <a href="<?php echo Url::to(['users/index']) ?>" 
+                                               class="btn btn-default btn-flat" id="btn-mt">
+                                                <i class="fa fa-cog text-green"></i> ส่วนตัว</a>
                                         </div>
                                         <div class="pull-right">
                                             <a href="javascript:logout()" 
-                                                class="btn btn-default btn-flat">
-                                            <i class="fa fa-power-off text-red"></i> ออกจากระบบ</a>
+                                               class="btn btn-default btn-flat" id="btn-mt">
+                                                <i class="fa fa-power-off text-red"></i> ออกจากระบบ</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -125,15 +131,15 @@ $this->title = "ประวัติผู้ป่วย";
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar bg-black-gradient" id="bg-sidebar">
+            <aside class="main-sidebar" id="bg-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" id="result_service">
                         <li id="btn-search-side">
-                        <a href="javascript:popup_dialog()">
-                            <i class="fa fa-search text-red"></i> 
-                            <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a>
+                            <a href="javascript:popup_dialog()">
+                                <i class="fa fa-search text-red"></i> 
+                                <span style="color: #ff6600;">ค้นหาผู้ป่วย</span></a>
                         </li>
                         <li class="header"><i class="fa fa-user"></i> ประวัติการรับบริการ</li>
                         <!-- 
@@ -158,7 +164,7 @@ $this->title = "ประวัติผู้ป่วย";
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style=" background: #000000;">
+            <div class="content-wrapper" id="bg-content">
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin: 0px;padding: 0px; border-radius: 0px;">
                     <h4 style="margin: 0px; font-size: 14px;">
@@ -413,7 +419,7 @@ $this->title = "ประวัติผู้ป่วย";
         var data = {a: 1};
 
         $.post(url, data, function (success) {
-            window.location="<?php echo Url::to(['site/index'])?>";
+            window.location = "<?php echo Url::to(['site/index']) ?>";
         });
     }
 

@@ -1,6 +1,8 @@
 <style type="text/css">
     .active-menu-history{
-        background: #ffff00;
+        background: #000000;
+        color:#ff6600;
+        font-weight: bold;
     }
     #history_full tbody tr .trueprivilege:hover{
         cursor: pointer;
