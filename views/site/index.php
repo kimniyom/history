@@ -184,9 +184,9 @@ use yii\helpers\Url;
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" style=" color: #FFF;"><i class="fa fa-ellipsis-v"></i> <font id="head-popup"></font></h4>
             </div>
- 
-                <div id="box-show-detail" style=" background: #FFF; color: #000;"></div>
-  
+
+            <div id="box-show-detail" style=" background: #FFF; color: #000;"></div>
+
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

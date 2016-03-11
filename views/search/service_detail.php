@@ -79,7 +79,11 @@ $config = new Config_system();
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3><?php echo $model['SBP'] . "/" . $model['DBP'] ?></h3>
+                <h3>
+                    <?php
+                    echo !empty($model['SBP']) ? $model['SBP'] . '/' . $model['PR'] : "-";
+                    ?>
+                </h3>
                 <p>ความดันโลหิต(SBP)</p>
             </div>
             <div class="icon">
@@ -93,7 +97,11 @@ $config = new Config_system();
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3><?php echo $model['PR'] ?></h3>
+                <h3>
+                    <?php
+                    echo !empty($model['PR']) ? $model['PR'] : "-";
+                    ?>
+                </h3>
                 <p>การเต้นของชีพจร(PR)</p>
             </div>
             <div class="icon">
@@ -107,7 +115,11 @@ $config = new Config_system();
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3><?php echo $model['RR'] ?></h3>
+                <h3>
+                    <?php
+                    echo !empty($model['RR']) ? $model['RR'] : "-";
+                    ?>
+                </h3>
                 <p>อัตราการหายใจ(RR)</p>
             </div>
             <div class="icon">
@@ -121,7 +133,11 @@ $config = new Config_system();
         <!-- small box -->
         <div class="small-box bg-blue">
             <div class="inner">
-                <h3><?php echo $model['BTEMP'] ?></h3>
+                <h3>
+                    <?php
+                    echo !empty($model['BTEMP']) ? $model['BTEMP'] : "-";
+                    ?>
+                </h3>
                 <p>อุณหภูมิร่างกาย(BTEMP)</p>
             </div>
             <div class="icon">
