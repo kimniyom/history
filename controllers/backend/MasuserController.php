@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 class MasuserController extends Controller {
 
     public $layout = "backend";
-/*
+
     public function behaviors() {
         return [
             'verbs' => [
@@ -26,7 +26,7 @@ class MasuserController extends Controller {
             ],
         ];
     }
-*/
+
     /**
      * Lists all Masuser models.
      * @return mixed
