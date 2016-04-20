@@ -25,19 +25,16 @@
     </tbody>
 </table>
 
-
-
 <script type="text/javascript">
     $(document).ready(function () {
         $("#pcu_out_group").DataTable({
             "bLengthChange": false, // แสดงจำนวน record ที่จะแสดงในตาราง
-            //"iDisplayLength": 10000, // กำหนดค่า default ของจำนวน record 
+            //"iDisplayLength": 10000, // กำหนดค่า default ของจำนวน record
             "paging": false,
             "sScrollY": "300px",
             "bFilter": true // แสดง search box
         });
     });</script>
-
 
 <script type="text/javascript">
     function add_pcu(row, hospcode) {
@@ -53,5 +50,3 @@
         }, "json");
     }
 </script>
-
-

@@ -51,8 +51,8 @@ $this->title = "ประวัติผู้ป่วย";
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="javascript:popup_dialog()" class="dropdown-toggle">
-                                    <img src="<?php echo Url::to('@web/web/images/recherche-icon.png'); ?>" class="user-image" alt="User Image" />
+                                <a href="<?php echo Url::to(['site/index'])?>" class="dropdown-toggle">
+                                    <i class="fa fa-search"></i>
                                     ค้นหาผู้ป่วย
                                 </a>
                             </li>
@@ -67,14 +67,14 @@ $this->title = "ประวัติผู้ป่วย";
                                     <li class="user-header">
                                         <img src="<?php echo Url::to('@web/web/themes/AdminLTE/dist/img/avatar.png') ?>" class="img-circle" alt="User Image">
                                         <p>
-                                            ผู้ใช้งาน : <?php echo Yii::$app->session['username'] ?> 
+                                            ผู้ใช้งาน : <?php echo Yii::$app->session['username'] ?>
                                             <small>สังกัด : <?php echo Yii::$app->session['hosname'] ?></small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
                                     <li class="user-body">
-                                        <div class="row">
                                             <!--
+                                              <div class="row">
                                             <div class="col-xs-4 text-center">
                                                 <a href="#">Followers</a>
                                             </div>
@@ -91,10 +91,10 @@ $this->title = "ประวัติผู้ป่วย";
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat"><i class="fa fa-cog text-green"></i> ส่วนตัว</a>
+                                            <a href="<?php echo Url::to(['users/index'])?>" class="btn btn-default btn-flat"><i class="fa fa-cog text-green"></i> ส่วนตัว</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="javascript:logout()" class="btn btn-default btn-flat"><i class="fa fa-power-off text-red"></i> ออกจากระบบ</a>
+                                            <a href="<?php echo Url::to(['site/logout'])?>" class="btn btn-default btn-flat"><i class="fa fa-power-off text-red"></i> ออกจากระบบ</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -131,7 +131,9 @@ $this->title = "ประวัติผู้ป่วย";
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper" id="bg-content">
                 <!-- Content Header (Page header) -->
-                <section class="content-header" style="margin: 0px;padding: 0px; border-radius: 0px;" id="navigator">
+                <section class="content-header"
+                  style="margin: 0px;padding: 0px; border-radius: 0px;"
+                  id="navigator">
                     <h4 style="margin: 0px; font-size: 14px;" id="navigator">
                         <?php
                         //echo Yii::$app->request->baseUrl;
